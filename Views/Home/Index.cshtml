@@ -1,0 +1,59 @@
+﻿@model List<Employee>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-12">
+        <table class="table">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th>Id</th>
+                    <th>FullName</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var e in Model)
+                {
+                    <tr>
+                        <td>@e.DisplayId.Substring(128,5)</td>
+                        <td>@e.FullName</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@e.DisplayId" class="btn btn-outline-primary">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom:20px;">
+    <div class="col-12">
+        <form asp-action="Encrypt" method="POST">
+            <div class="input-group">
+                <input type="text" name="data" id="data" class="form-control"/>
+                <span class="input-group-btn">
+                    <input type="submit" value="Encrypt" class="btn btn-outline-primary"/>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <form asp-action="Decrypt" method="POST">
+            <div class="input-group">
+                <input type="text" name="data" id="data" class="form-control"/>
+                <span class="input-group-btn">
+                    <input type="submit" value="Decrypt" class="btn btn-outline-primary"/>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+<hr/>
+Result: @TempData["Result"]
+

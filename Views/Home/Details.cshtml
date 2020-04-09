@@ -1,0 +1,14 @@
+@model Employee
+
+<div class="row">
+    <div class="col-12">
+        <h2 class="text-center">
+            Employee Details
+        </h2>
+
+        <p>Id: @Model.DisplayId.Substring(128,5)</p>
+        <p>FullName : @Model.FullName</p>
+
+
+    </div>
+</div>
